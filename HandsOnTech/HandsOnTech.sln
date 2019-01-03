@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOnTech.DAL", "HandsOnT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOnTech.BLL", "HandsOnTech.BLL\HandsOnTech.BLL.csproj", "{76AC84D3-0B4B-4605-B4C5-D04C2F0CA895}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOnTech.BLL.Tests", "HandsOnTech.BLL.Tests\HandsOnTech.BLL.Tests.csproj", "{094CBF66-6568-4387-8187-D6D536BF35A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{76AC84D3-0B4B-4605-B4C5-D04C2F0CA895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76AC84D3-0B4B-4605-B4C5-D04C2F0CA895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76AC84D3-0B4B-4605-B4C5-D04C2F0CA895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{094CBF66-6568-4387-8187-D6D536BF35A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094CBF66-6568-4387-8187-D6D536BF35A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094CBF66-6568-4387-8187-D6D536BF35A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094CBF66-6568-4387-8187-D6D536BF35A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
