@@ -60,6 +60,16 @@
             <table class="table table-bordered table-hover" id="tblEmployees">
                 <thead>
                     <tr>
+                        <td colspan="3">
+                            <input data-bind="value: employeeId" id="txtEmployeeId" class="form-control" placeholder="Employee ID" />
+                        </td>
+                        <td colspan="2">
+                            <button data-bind='click: getEmployees' id="btnGetEmployees" class="btn btn-primary">
+                                Get Employees
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>
                             #ID
                         </th>
@@ -87,17 +97,38 @@
 @section scripts{
     <script type="text/javascript">
         (function ($) {
-            let apiUrl = "/api/employees";
-            $.getJSON(apiUrl).done(function (data) {
-                console.log(data);
-                for (let i = 0; i < data.length; i++) {
-                    let emp = data[i];
-                    $("#tblEmployees tbody").append("<tr><td>" + emp.id + "</td>"
-                        + "<td>" + emp.name + "</td>"
-                        + "<td>" + emp.roleName + "</td>"
-                        + "<td>" + emp.contractTypeName + "</td>"
-                        + "<td>" + emp.annualSalary + "</td></tr>");
+            $("#btnGetEmployees").click(function (e) {
+                let apiUrl = "/api/employees";
+                let empId = parseInt($("#txtEmployeeId").val() || "0");
+                console.log("empId:", empId);
+                if (empId > 0) {
+                    apiUrl = apiUrl + "/" + empId;
                 }
+                $("#tblEmployees tbody").html("");
+                $.getJSON(apiUrl).done(function (data) {
+                    console.log("data:", data);
+                    if (Array.isArray(data)) {
+                        for (let i = 0; i < data.length; i++) {
+                            let emp = data[i];
+                            $("#tblEmployees tbody").append("<tr><td>" + emp.id + "</td>"
+                                + "<td>" + emp.name + "</td>"
+                                + "<td>" + emp.roleName + "</td>"
+                                + "<td>" + emp.contractTypeName + "</td>"
+                                + "<td>" + emp.annualSalary + "</td></tr>");
+                        }
+                    }
+                    else {
+                        let emp = data;
+                        $("#tblEmployees tbody").append("<tr><td>" + emp.id + "</td>"
+                            + "<td>" + emp.name + "</td>"
+                            + "<td>" + emp.roleName + "</td>"
+                            + "<td>" + emp.contractTypeName + "</td>"
+                            + "<td>" + emp.annualSalary + "</td></tr>");
+                    }
+                }).fail(function (err) {
+                    console.log("err:", err);
+                    $("#tblEmployees tbody").html("<tr><td  colspan='5'>" + err.responseText + "</td></tr>");
+                });
             });
         })(jQuery);
     </script>
