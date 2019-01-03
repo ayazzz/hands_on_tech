@@ -36,7 +36,31 @@ namespace Tests
 
             Assert.IsNotNull(employee);
             Assert.AreEqual(employeeId, employee.id);
+        }
+
+        [Test]
+        public async Task ShouldEmployeeAnnualSalaryMonthly()
+        {
+            var employeeId = 10;
+
+            var employee = await _employeesRepo.GetEmployeeAsync(employeeId);
+
+            Assert.IsNotNull(employee);
+            Assert.AreEqual(employeeId, employee.id);
             Assert.AreEqual(144000000, employee.AnnualSalary);
+        }
+
+
+        [Test]
+        public async Task ShouldEmployeeAnnualSalaryHourly()
+        {
+            var employeeId = 12;
+
+            var employee = await _employeesRepo.GetEmployeeAsync(employeeId);
+
+            Assert.IsNotNull(employee);
+            Assert.AreEqual(employeeId, employee.id);
+            Assert.AreEqual(115200000, employee.AnnualSalary);
         }
     }
 }
